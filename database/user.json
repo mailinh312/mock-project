@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "admin",
+      "role": "admin"
+    },
+    {
+      "id": "e3e3",
+      "username": "user",
+      "password": "123456",
+      "role": "user"
+    }
+  ],
+  "roles": [
+    {
+      "id": "1",
+      "roleName": "admin",
+      "permissions": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "2",
+      "roleName": "user",
+      "permissions": []
+    }
+  ],
+  "permissions": [
+    {
+      "id": 1,
+      "name": "user-management:get",
+      "description": "Xem danh sách người dùng"
+    },
+    {
+      "id": 2,
+      "name": "user-management:edit",
+      "description": "Chỉnh sửa thông tin người dùng"
+    }
+  ]
+}

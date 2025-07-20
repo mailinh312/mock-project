@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <h3 class="text-primary mb-3">Danh sách người dùng</h3>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Tên đăng nhập</th>
+        <th>Vai trò</th>
+        <th>Tùy chọn</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <button [routerLink]="['/user-detail', user.id]" class="btn btn-primary btn-sm">Chỉnh sửa</button>
+          <button (click)="removeUser(user.id)" class="btn btn-danger btn-sm ms-1">Xóa</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
