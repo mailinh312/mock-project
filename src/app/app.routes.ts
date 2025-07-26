@@ -6,7 +6,7 @@ import { UserManagement } from './user.management/user.management';
 import { Profile } from './profile/profile';
 import { UserDetail } from './user.detail/user.detail';
 import { PermissionManagement } from './permission/permission';
-import { PermissionGuard } from '../service/PermissionGuard';
+import { CaslAbilityGuard } from './casl-ability.guard';
 
 export const routes: Routes = [
   { path: 'login', component: Login },
@@ -14,19 +14,44 @@ export const routes: Routes = [
     path: 'home',
     component: Home,
     children: [
-      { path: 'profile', component: Profile },
+      { 
+        path: 'profile', 
+        component: Profile,
+        canActivate: [CaslAbilityGuard],
+        data: { action: 'read', subject: 'profile' }
+      },
       {
         path: 'user-management',
         component: UserManagement,
-        canActivate: [PermissionGuard],
-        data: { permission: 'user-management:get' },
+        canActivate: [CaslAbilityGuard],
+        data: { action: 'manage', subject: 'user' },
       },
-      { path: 'permission', component: PermissionManagement }
+      { 
+        path: 'permission', 
+        component: PermissionManagement,
+        canActivate: [CaslAbilityGuard],
+        data: { action: 'manage', subject: 'permission' }
+      }
     ],
   },
-  { path: 'user-detail/:id', component: UserDetail },
-  { path: 'profile', component: Profile },
+  { 
+    path: 'user-detail/:id', 
+    component: UserDetail,
+    canActivate: [CaslAbilityGuard],
+    data: { action: 'read', subject: 'user' }
+  },
+  { 
+    path: 'profile', 
+    component: Profile,
+    canActivate: [CaslAbilityGuard],
+    data: { action: 'read', subject: 'profile' }
+  },
   { path: 'register', component: Register },
-  { path: 'permission', component: PermissionManagement },
+  { 
+    path: 'permission', 
+    component: PermissionManagement,
+    canActivate: [CaslAbilityGuard],
+    data: { action: 'manage', subject: 'permission' }
+  },
   { path: '**', redirectTo: 'login' },
 ];

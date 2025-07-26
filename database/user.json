@@ -11,6 +11,12 @@
       "username": "user",
       "password": "123456",
       "role": "user"
+    },
+    {
+      "id": "b988",
+      "username": "linh",
+      "password": "123456",
+      "role": "user"
     }
   ],
   "roles": [
@@ -30,12 +36,12 @@
   ],
   "permissions": [
     {
-      "id": 1,
+      "id": "1",
       "name": "user-management:get",
       "description": "Xem danh sách người dùng"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "user-management:edit",
       "description": "Chỉnh sửa thông tin người dùng"
     }

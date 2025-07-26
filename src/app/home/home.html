@@ -5,9 +5,9 @@
 
   <div class="card mt-3">
     <div class="card-body">
-      <a routerLink="user-management" class="btn btn-outline primary">Quản lý người dùng</a>
-      <a routerLink="profile" class="btn btn-outline">Thông tin cá nhân</a>
-      <a routerLink="permission" class="btn btn-outline">Quản lý chức năng</a>
+      <a *ngIf="'manage' | able: 'user'" routerLink="user-management" class="btn btn-outline primary">Quản lý người dùng</a>
+      <a *ngIf="'read' | able: 'profile'" routerLink="profile" class="btn btn-outline">Thông tin cá nhân</a>
+      <a *ngIf="'manage' | able: 'permission'" routerLink="permission" class="btn btn-outline">Quản lý chức năng</a>
     </div>
   </div>
 

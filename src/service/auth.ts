@@ -66,4 +66,32 @@ export class Auth {
     console.log('permission' + permissions[0]);
     return permissions.some((p) => p.name === perm);
   }
+
+  // Thêm method mới để lấy thông tin user với permissions cho CASL
+  async getCurrentUserWithPermissions(): Promise<any> {
+    const currentUser = this.getCurrentUser();
+    if (!currentUser) return null;
+
+    try {
+      const role = await firstValueFrom(
+        this.roleService.getRoleByName(currentUser.role)
+      );
+      
+      let permissions: string[] = [];
+      if (role.permissions && role.permissions.length > 0) {
+        const permissionObjects = await firstValueFrom(
+          this.permissionService.getPermissionsByListIds(role.permissions)
+        );
+        permissions = permissionObjects.map(p => p.name);
+      }
+
+      return {
+        ...currentUser,
+        permissions
+      };
+    } catch (error) {
+      console.error('Error getting user permissions:', error);
+      return currentUser;
+    }
+  }
 }

@@ -20,6 +20,8 @@
     "@angular/platform-server": "^20.0.0",
     "@angular/router": "^20.0.0",
     "@angular/ssr": "^20.0.1",
+    "@casl/ability": "^6.7.3",
+    "@casl/angular": "^9.0.3",
     "express": "^5.1.0",
     "primeicons": "^6.0.0",
     "primeng": "^17.7.3",
